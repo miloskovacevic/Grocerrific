@@ -1,0 +1,21 @@
+{
+  "name": "grocerrific",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Milos Kovacevic"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/miloskovacevic/Grocerrific",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.14.3"
+  }
+}
