@@ -8,6 +8,13 @@ var GroceryItemActionCreator = {
             type: 'grocery-item:add'
         });
     }
+    ,
+    delete: function(item){
+        dispatcher.dispatch({
+            payload: item,
+            type: 'grocery-item:delete'
+        });
+    }
 };
 
 module.exports = GroceryItemActionCreator;
