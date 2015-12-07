@@ -17,12 +17,14 @@
   },
   "homepage": "https://github.com/miloskovacevic/Grocerrific#readme",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "browser-sync": "^2.10.0",
     "browserify": "^12.0.1",
     "express": "^4.13.3",
     "guid": "0.0.12",
     "gulp": "^3.9.0",
     "gulp-live-server": "0.0.29",
+    "jquery": "^2.1.4",
     "react": "^0.14.3",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0"

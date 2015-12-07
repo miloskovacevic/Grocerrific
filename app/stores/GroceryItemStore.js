@@ -1,21 +1,14 @@
 var dispatcher = require('./../dispatcher');
+var helper = require('./../helpers/RestHelper');
 
 function GroceryItemStore(){
-    var items = [
-        {
-            name: 'Ice Cream'
-        },
-        {
-            name: 'Waffles'
-        },
-        {
-            name:'Candy',
-            purchased: true
-        },
-        {
-            name: 'Sharks'
-        }
-    ];
+    var items = [];
+
+    helper.get("api/items")
+    .then(function (data) {
+        items = data;
+        triggerListeners();
+    });
 
     var listeners = [];
 
@@ -26,6 +19,7 @@ function GroceryItemStore(){
     function addGroceryItem(item){
         items.push(item);
         triggerListeners();
+        helper.post("api/items", item);
     }
 
     function deleteGroceryItem(item){
@@ -50,6 +44,14 @@ function GroceryItemStore(){
         });
     }
 
+    function setGroceryItemBought(item, isBought){
+        var _item = items.filter(function(a){
+            return a.name == item.name
+        })[0];
+        item.purchased = isBought || false;
+        triggerListeners();
+    }
+
     //ovde paket je klasican paket sa propsima 'payload' i 'type'
     dispatcher.register(function (paket) {
         var split = paket.type.split(':');
@@ -61,6 +63,12 @@ function GroceryItemStore(){
                     break;
                 case "delete":
                     deleteGroceryItem(paket.payload);
+                    break;
+                case "buy":
+                    setGroceryItemBought(paket.payload, true);
+                    break;
+                case "unbuy":
+                    setGroceryItemBought(paket.payload, false);
                     break;
             }
         }
