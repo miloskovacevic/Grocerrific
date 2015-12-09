@@ -22,6 +22,28 @@ var RestHelper = {
                 error: error
             });
         });
+    },
+    patch: function (url, data) {
+        return new Promise(function (success, error) {
+            $.ajax({
+                url: url,
+                type: "PATCH",
+                dataType: "json",
+                data: data,
+                success: success,
+                error: error
+            });
+        });
+    },
+    del: function (url) {
+        return new Promise(function (success, error) {
+            $.ajax({
+                url: url,
+                type: "DELETE",
+                success: success,
+                error: error
+            });
+        });
     }
 };
 
